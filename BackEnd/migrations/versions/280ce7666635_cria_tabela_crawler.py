@@ -20,7 +20,7 @@ depends_on: Union[str, Sequence[str], None] = None
 def upgrade() -> None:
     """Upgrade schema."""
     op.create_table(
-        'crawler',
+        'crawlers',
         sa.Column('id', sa.Integer(), nullable=False),
         sa.Column('fonte_id', sa.Integer(), nullable=False),
         sa.Column('nome', sa.String(255), nullable=False),
@@ -28,11 +28,11 @@ def upgrade() -> None:
         sa.Column('ativo', sa.Boolean(), nullable=False, server_default=sa.true()),
         sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False),
         sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.func.now(), onupdate=sa.func.now(), nullable=False),
-        sa.ForeignKeyConstraint(['fonte_id'], ['fonte.id'], ondelete='CASCADE'),
+        sa.ForeignKeyConstraint(['fonte_id'], ['fontes.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id')
     )
 
 
 def downgrade() -> None:
     """Downgrade schema."""
-    op.drop_table('crawler')
+    op.drop_table('crawlers')

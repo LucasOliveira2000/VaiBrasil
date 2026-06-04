@@ -4,10 +4,10 @@ from datetime import datetime
 
 
 class Crawler(SQLModel, table=True):
-    __tablename__ = "crawler"
+    __tablename__ = "crawlers"
 
     id: Optional[int] = Field(default=None, primary_key=True, index=True)
-    fonte_id: int = Field(foreign_key="fonte.id", nullable=False, index=True)
+    fonte_id: int = Field(foreign_key="fontes.id", nullable=False, index=True)
     nome: str = Field(max_length=255, nullable=False)
     url: str = Field(max_length=500, nullable=False)
     ativo: bool = Field(default=True, nullable=False)

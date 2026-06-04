@@ -21,7 +21,7 @@ def upgrade() -> None:
     """Upgrade schema."""
     
     op.create_table(
-        'fonte',
+        'fontes',
         sa.Column('id', sa.Integer(), nullable=False),
         sa.Column('nome', sa.String(255), nullable=False),
         sa.Column('ativo', sa.Boolean(), nullable=False, server_default=sa.true()),
@@ -34,5 +34,5 @@ def upgrade() -> None:
 def downgrade() -> None:
     """Downgrade schema."""
 
-    op.drop_table('fonte')
+    op.drop_table('fontes')
     

@@ -3,7 +3,7 @@ from sqlmodel import Column, Field, SQLModel, String, DateTime, func
 from datetime import datetime
 
 class FonteModel(SQLModel, table=True):
-    __tablename__ = "fonte"
+    __tablename__ = "fontes"
 
     id: Optional[int] = Field(default=None, primary_key=True, index=True)
     nome: str = Field(sa_column=Column(String(255), nullable=False))
