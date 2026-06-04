@@ -25,6 +25,8 @@ def upgrade() -> None:
         sa.Column('fonte_id', sa.Integer(), nullable=False),
         sa.Column('nome', sa.String(255), nullable=False),
         sa.Column('url', sa.String(500), nullable=False),
+        sa.Column('caminho_modulo', sa.String(500), nullable=False),
+        sa.Column('classe_nome', sa.String(255), nullable=False),
         sa.Column('ativo', sa.Boolean(), nullable=False, server_default=sa.true()),
         sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False),
         sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.func.now(), onupdate=sa.func.now(), nullable=False),

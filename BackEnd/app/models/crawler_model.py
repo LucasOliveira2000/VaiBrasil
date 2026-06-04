@@ -1,4 +1,4 @@
-from sqlmodel import Column, Field, SQLModel, String, DateTime, func
+from sqlmodel import Column, Field, SQLModel, DateTime, func
 from typing import Optional
 from datetime import datetime
 
@@ -11,6 +11,8 @@ class Crawler(SQLModel, table=True):
     nome: str = Field(max_length=255, nullable=False)
     url: str = Field(max_length=500, nullable=False)
     ativo: bool = Field(default=True, nullable=False)
+    caminho_modulo: str = Field(max_length=500, nullable=False)
+    classe_nome: str = Field(max_length=255, nullable=False)
     created_at: datetime = Field(
         sa_column=Column(
             DateTime(timezone=True),
