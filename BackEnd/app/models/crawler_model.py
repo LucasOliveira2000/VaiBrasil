@@ -1,12 +1,15 @@
-from typing import Optional
 from sqlmodel import Column, Field, SQLModel, String, DateTime, func
+from typing import Optional
 from datetime import datetime
 
-class FonteModel(SQLModel, table=True):
-    __tablename__ = "fonte"
+
+class Crawler(SQLModel, table=True):
+    __tablename__ = "crawler"
 
     id: Optional[int] = Field(default=None, primary_key=True, index=True)
-    nome: str = Field(sa_column=Column(String(255), nullable=False))
+    fonte_id: int = Field(foreign_key="fonte.id", nullable=False, index=True)
+    nome: str = Field(max_length=255, nullable=False)
+    url: str = Field(max_length=500, nullable=False)
     ativo: bool = Field(default=True, nullable=False)
     created_at: datetime = Field(
         sa_column=Column(
@@ -15,7 +18,6 @@ class FonteModel(SQLModel, table=True):
             nullable=False,
         )
     )
-
     updated_at: datetime = Field(
         sa_column=Column(
             DateTime(timezone=True),
